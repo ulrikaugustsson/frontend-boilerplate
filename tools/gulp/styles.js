@@ -8,6 +8,7 @@ import mixins from 'postcss-mixins';
 import plumber from 'gulp-plumber';
 import cssImport from 'postcss-import';
 import calc from 'postcss-calc';
+import browserSync from 'browser-sync';
 
 gulp.task('css', function () {
 	let processors = [
@@ -23,5 +24,6 @@ gulp.task('css', function () {
 	return gulp.src('src/main.css')
 		.pipe(plumber())
 		.pipe(postcss(processors))
-		.pipe(gulp.dest('dist'));
+		.pipe(gulp.dest('dist'))
+		.pipe(browserSync.stream());
 });

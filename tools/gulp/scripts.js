@@ -8,6 +8,7 @@ import sourcemaps from 'gulp-sourcemaps';
 import watchify from 'watchify';
 import uglify from 'gulp-uglify';
 import gulpif from 'gulp-if';
+import browserSync from 'browser-sync';
 
 var watch = false;
 
@@ -53,7 +54,8 @@ function bundle() {
 				uglify()
 			))
 			.pipe(sourcemaps.write('./'))
-			.pipe(gulp.dest('./dist'));
+			.pipe(gulp.dest('./dist'))
+			.pipe(browserSync.stream());
 	}
 
 	return rebundle(brows);
